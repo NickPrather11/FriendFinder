@@ -10,6 +10,85 @@
     <script src="https://code.jquery.com/jquery.js"></script>
   </head>
   <body>
-    <h1>Survey Page</h1>
+      <div class="container">
+          <div class="jumbotron">
+            <h1>Friend Finder Profile Survey</h1>
+            <h3>Make New Friends NOW!</h3>
+            <hr />
+            <a href="/"
+              ><button class="btn btn-primary btn-lg"><span class="fa fa-home"></span> Back to Home Page</button></a
+            >
+          </div>
+          <div class="row">
+            <div class="col-10">
+              <div class="card">
+                <div class="card-header">
+                  <h1>Edit Profile</h1>
+                </div>
+                <div class="card-body">
+                  <form method="POST" role="form">
+                      <div class="form-group">
+                          <label for="name">Name</label>
+                          <input type="text" class="form-control" id="name">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                          <label for="picture">Add a link to picture of you!</label>
+                          <input type="text" class="form-control" id="picture">
+                        </div>
+                        <br>
+                        <div>
+                          <h3>Please fill out the following survey and then click 'Submit'</h3>
+                        </div>
+                        <div id="surveyQuestions">
+                          <br>
+                        </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <script>
+            var surveyQuestions = [
+              "Question #1",
+              "Question #2",
+              "Question #3",
+              "Question #4",
+              "Question #5",
+              "Question #6",
+              "Question #7",
+              "Question #8",
+              "Question #9",
+              "Question #10",
+            ];
+
+            var selectOptions = [
+              "1 (Completely Disagree)",
+              "2 (Somewhat Disagree)",
+              "3 (Neutral / No Opinion)",
+              "4 (Somewhat Agree)",
+              "5 (Completely Agree)"
+            ];
+
+            surveyQuestions.forEach(function(item){
+              var newQuest = $("<div>").addClass("form-group");
+              var newLabel = $("<label>").text(item);
+              var newSelectBox = $("<select>").addClass("form-control");
+                selectOptions.forEach(function(answer){
+                  var newAnswer = $("<option>").text(answer);
+                    newSelectBox.append(newAnswer);
+                });
+              newQuest.append(newLabel);
+              newQuest.append(newSelectBox);
+              $("#surveyQuestions").append(newQuest);
+              $("#surveyQuestions").append("<br>");
+            });
+
+            var submitBtn = $("<submit>").addClass("btn btn-primary").attr("type", "submit").text("Submit");
+            $("#surveyQuestions").append(submitBtn);
+
+
+
+          </script>
   </body>
 </html>
