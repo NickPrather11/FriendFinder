@@ -70,7 +70,7 @@
               "5 (Completely Agree)"
             ];
 
-            surveyQuestions.forEach(function(item){
+            surveyQuestions.forEach(function(index, item){
               var newQuest = $("<div>").addClass("form-group");
               var newLabel = $("<label>").text(item);
               var newSelectBox = $("<select>").addClass("form-control");
@@ -84,10 +84,29 @@
               $("#surveyQuestions").append("<br>");
             });
 
-            var submitBtn = $("<submit>").addClass("btn btn-primary").attr("type", "submit").text("Submit");
+            var submitBtn = $("<submit>").addClass("btn btn-primary addBtn").attr("type", "submit").text("Submit");
             $("#surveyQuestions").append(submitBtn);
 
+            $(".addBtn").on("click", function(event){     
+              event.preventDefault();
+              var answerArray = [];
+              console.log($("select").val());
+                $.each($("select"), function(index, item){
+                  answerArray.push(selectOptions.indexOf($(this).val())+1);
+                });         
+                console.log(answerArray);
+               
+                var newUser = {
+                  name: $("#name").val().trim(),
+                  photo: $("#picture").val().trim(),
+                  scores: answerArray                  
+                }
+              })
 
+            $.post("/api/friends", newUser).then(function(data){
+              console.log("add.html", data);
+              alert("Adding character...");
+            })
 
           </script>
   </body>
