@@ -92,7 +92,7 @@
               var answerArray = [];
               console.log($("select").val());
                 $.each($("select"), function(index, item){
-                  answerArray.push(selectOptions.indexOf($(this).val())+1);
+                  answerArray.push(parseInt(selectOptions.indexOf($(this).val()))+1);
                 });         
                 console.log(answerArray);
                
@@ -101,12 +101,13 @@
                   photo: $("#picture").val().trim(),
                   scores: answerArray                  
                 }
+                $.post("/api/friends", newUser).then(function(data){
+              console.log("add.html", data);
+              alert("Adding user...");
+            })
               })
 
-            $.post("/api/friends", newUser).then(function(data){
-              console.log("add.html", data);
-              alert("Adding character...");
-            })
+            
 
           </script>
   </body>

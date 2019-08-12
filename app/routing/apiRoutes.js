@@ -8,6 +8,9 @@ function apiRoutes(app) {
   app.post("/api/friends", function(req, res) {
     //convert input from form to object and push said object to friendsArray
     //COMPATABILITY LOGIC
+    var newUser = req.body;
+    friendsArray.push(newUser);
+    res.json(newUser);
   });
 }
 
