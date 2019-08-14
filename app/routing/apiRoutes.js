@@ -11,8 +11,7 @@ function apiRoutes(app) {
     var newUser = req.body;
     var indexOfClosestUser = compatability(newUser);
     friendsArray.push(newUser);
-    res.json(newUser);
-    console.log("Best Friend: " + friendsArray[indexOfClosestUser].name);
+    res.json(friendsArray[indexOfClosestUser]);
   });
 }
 
