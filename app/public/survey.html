@@ -10,6 +10,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" src="css/style.css">
     
   </head>
   <body>
@@ -49,13 +50,15 @@
                   </form>
                   <div class="modal fade bd-example-modal-lg" id="friendModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-                        <div>
+                      <div class="modal-content container" id="friendInfo">
+                        <div class="row">
                           <h1>Meet Your New Best Friend!</h1>
                         </div>
-                        <div id="friendPic"></div>
-                        <div id="friendName"></div>
+                        <div class="row">
+                          <div id="friendName"></div>
+                          <div id="friendPic"></div>                        
                       </div>
+                    </div>
                     </div>
                   </div>
                 </div>
@@ -117,20 +120,14 @@
                 }
                 
               $.post("/api/friends", newUser).then(function(data){
-              console.log("add.html", data)
+              console.log("Closest friend match: ", data)
               alert("Adding user...");              
               var friendImg = $("<img>").attr("src", data.photo)
               $("#friendPic").append(friendImg);
-              var friendName = $("<p>").text(data.name);
+              var friendName = $("<h3>").text(data.name);
               $("#friendName").append(friendName);
-              $('#friendModal').modal("show");
+              $("#friendModal").modal("show");
             })
-
-            // $.post("/api/friends", newUser).then(function(data){
-            //   console.log("add.html", data)
-            //   alert("Adding user...");
-            //   $('#friendModal').modal("show");
-            // })
               })
 
             
