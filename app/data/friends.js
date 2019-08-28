@@ -15,7 +15,7 @@ var friendsArray = [
     scores: [4, 5, 4, 5, 4, 5, 4, 5, 4, 5]
   },
   {
-    name: "Eddie",
+    name: "Kenny",
     photo: "https://i.imgur.com/NvLIy3z.jpg",
     scores: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
   },
