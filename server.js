@@ -1,7 +1,7 @@
 var express = require("express"),
   path = require("path"),
   app = express(),
-  PORT = 3000;
+  PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
